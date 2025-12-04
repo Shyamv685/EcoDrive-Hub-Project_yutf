@@ -75,9 +75,7 @@ export type Database = {
           emission_rate: number
           id: string
           image_url: string | null
-          latitude: number | null
           location: string
-          longitude: number | null
           name: string
           type: string
           updated_at: string | null
@@ -88,9 +86,7 @@ export type Database = {
           emission_rate: number
           id?: string
           image_url?: string | null
-          latitude?: number | null
           location: string
-          longitude?: number | null
           name: string
           type: string
           updated_at?: string | null
@@ -101,9 +97,7 @@ export type Database = {
           emission_rate?: number
           id?: string
           image_url?: string | null
-          latitude?: number | null
           location?: string
-          longitude?: number | null
           name?: string
           type?: string
           updated_at?: string | null
@@ -192,17 +186,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      authenticate_user: {
-        Args: { email_param: string; password_param: string }
-        Returns: {
-          credits: number
-          eco_score: number
-          green_tier: string
-          user_email: string
-          user_id: string
-          user_name: string
-        }[]
-      }
       award_credits: {
         Args: {
           eco_savings: number
@@ -214,10 +197,6 @@ export type Database = {
       calculate_eco_savings: {
         Args: { car_emission_rate: number; distance_km: number }
         Returns: number
-      }
-      create_user_with_auth: {
-        Args: { user_email: string; user_name: string; user_password: string }
-        Returns: string
       }
       eco_match: {
         Args: {
@@ -370,7 +349,6 @@ export type Database = {
           total_eco_savings: number
         }[]
       }
-      hash_password: { Args: { password: string }; Returns: string }
       is_admin: { Args: { user_id: string }; Returns: boolean }
       predict_service_needs: {
         Args: { car_id_param: string }
@@ -408,29 +386,6 @@ export type Database = {
           location: string
         }[]
       }
-      search_cars_by_location: {
-        Args: {
-          available_only?: boolean
-          car_type_param?: string
-          lat_param: number
-          limit_count?: number
-          lng_param: number
-          radius_km?: number
-        }
-        Returns: {
-          available: boolean
-          car_id: string
-          car_name: string
-          car_type: string
-          distance_km: number
-          eco_rating: number
-          emission_rate: number
-          image_url: string
-          latitude: number
-          location: string
-          longitude: number
-        }[]
-      }
       signup_user: {
         Args: { user_email: string; user_name: string; user_password: string }
         Returns: string
@@ -438,10 +393,6 @@ export type Database = {
       update_eco_score: {
         Args: { additional_score: number; user_id_param: string }
         Returns: undefined
-      }
-      verify_password: {
-        Args: { hash: string; password: string }
-        Returns: boolean
       }
     }
     Enums: {
