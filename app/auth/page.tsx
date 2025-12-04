@@ -26,9 +26,6 @@ export default function Home() {
                 <Link href="/admin" className="text-[#2E7D32] hover:text-[#1B5E20]">
                   Admin
                 </Link>
-                <Link href="/debug" className="text-[#2E7D32] hover:text-[#1B5E20]">
-                  Debug
-                </Link>
               </>
             ) : (
               <Link href="/auth" className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white px-4 py-2 rounded">
