@@ -2,11 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { useAuth } from "@/lib/auth-context"
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { user, logout } = useAuth()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -30,15 +28,7 @@ export default function Home() {
             <li><Link href="/dashboard" className="hover:text-[#2E7D32]">Dashboard</Link></li>
             <li><Link href="/profile" className="hover:text-[#2E7D32]">Profile</Link></li>
             <li><Link href="/admin" className="hover:text-[#2E7D32]">Admin</Link></li>
-            {user ? (
-              <li>
-                <button onClick={logout} className="text-white bg-red-600 hover:bg-red-700 px-3 py-1 rounded">
-                  Logout
-                </button>
-              </li>
-            ) : (
-              <li><Link href="/auth" className="text-white bg-[#2E7D32] px-3 py-1 rounded">Login</Link></li>
-            )}
+            <li><Link href="/auth" className="text-white bg-[#2E7D32] px-3 py-1 rounded">Login</Link></li>
           </ul>
         </nav>
         {menuOpen && (
@@ -49,15 +39,7 @@ export default function Home() {
             <li><Link href="/dashboard" className="py-2">Dashboard</Link></li>
             <li><Link href="/profile" className="py-2">Profile</Link></li>
             <li><Link href="/admin" className="py-2">Admin</Link></li>
-            {user ? (
-              <li>
-                <button onClick={logout} className="py-2 text-white bg-red-600 rounded text-center w-full">
-                  Logout
-                </button>
-              </li>
-            ) : (
-              <li><Link href="/auth" className="py-2 text-white bg-[#2E7D32] rounded text-center">Login</Link></li>
-            )}
+            <li><Link href="/auth" className="py-2 text-white bg-[#2E7D32] rounded text-center">Login</Link></li>
           </ul>
         )}
       </header>
@@ -73,13 +55,6 @@ export default function Home() {
             <Link href="/rent" className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white px-4 py-2 rounded">Find Cars</Link>
             <Link href="/dashboard" className="border border-[#4CAF50] text-[#2E7D32] px-4 py-2 rounded">View Dashboard</Link>
           </div>
-          {user && (
-            <div className="mt-4 p-3 bg-[#A5D6A7] rounded">
-              <p className="text-sm text-[#2E7D32]">
-                Welcome back, {user.name}! Eco Score: {user.ecoScore} | Tier: {user.greenTier} | Credits: {user.credits}
-              </p>
-            </div>
-          )}
         </div>
         <div className="rounded-lg bg-[#A5D6A7] p-4 text-[#2E7D32]">
           <p className="font-semibold">Featured:</p>
